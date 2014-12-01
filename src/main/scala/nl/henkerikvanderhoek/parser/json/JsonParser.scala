@@ -7,11 +7,7 @@ object JsonParser {
   val pJsonNull:Parser[JsonNull] =
     P.pSym("null").as(JsonNull())
 
-  val pJsonBoolean:Parser[JsonBoolean] = {
-    val pTrue  = P.pSym("true").as(JsonBoolean(true))
-    val pFalse = P.pSym("false").as(JsonBoolean(false))
-    pTrue choice pFalse
-  }
+  val pJsonBoolean:Parser[JsonBoolean] = ???
 
   val pJsonString:Parser[JsonString] =
     for { str <- P.pToken(P.pString) } yield JsonString(str)
@@ -19,8 +15,7 @@ object JsonParser {
   val pJsonNumber:Parser[JsonNumber] =
     for { n <- P.pToken(P.pDigits) } yield JsonNumber(n)
 
-  val pJsonArray:Parser[JsonArray] =
-    for { xs <- P.pBrackets(P.pSepBy(pJsonValue, P.pComma)) } yield JsonArray(xs)
+  val pJsonArray:Parser[JsonArray] = ???
 
   val pJsonObject:Parser[JsonObject] = {
     val pPair = for {
